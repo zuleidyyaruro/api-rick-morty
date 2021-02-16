@@ -31,9 +31,8 @@ const ResidentContainer = ({ url }) => {
 
     console.log(locationDataResident)
 
-
     return (
-        <div>
+        <div className=" col margin-auto col-lg-3">
             <ResidentInfo data={locationDataResident} />
         </div>
     );

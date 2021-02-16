@@ -6,8 +6,8 @@ const LocationInfo = ({ location }) => {
 
     return (
         <div>
-            <div className="location-info border">
-                <h2 className="border">Location</h2>
+            <div className="location-info">
+                <h2>Location</h2>
                 <span><strong>Name: </strong>{nameLocation}</span>
                 <span><strong>Type: </strong> {typeLocation}</span>
                 <span><strong>Dimension: </strong>{dimensionLocation}</span>

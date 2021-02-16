@@ -22,8 +22,9 @@ function App() {
 
       <Navbar/>
       <SearchBox handleSearch={handleSearchLocation} />
-      <LocationContainer id={id}/>
 
+      <LocationContainer id={id}/>
+  
     </div>
   );
 }

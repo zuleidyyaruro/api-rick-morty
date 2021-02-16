@@ -11,6 +11,8 @@ const LocationContainer = ({ id }) => {
     // Guarda los datos de la ubicacion
     const [location, setLocation] = useState();
     const [locationData, setLocationData] = useState({});
+    const [temp, setTemp] = useState(true);
+
 
     // Ejecuta la funcion axios.get cada vez que el id cambia
     // Obtenemos los datos de la ubicacion y se almacenan en location
@@ -22,30 +24,38 @@ const LocationContainer = ({ id }) => {
         }
     }, [id]);
 
+    // Este useEffect se ejececuta la primera vez que carga la pagina
+
+
     // Obtenemos cada uno de los datos de la ubicacion y los almacenamos en un objeto. 
     // El use efect se ejecuta cada vez que la variable location cambia
     useEffect(() => {
         if (location) {
             const nameLocation = location.name;
-            const typeLocation= location.type;
+            const typeLocation = location.type;
             const dimensionLocation = location.dimension;
             const numberResidentsLocation = location.residents.length;
-            const residentsLocation = location.residents.map(value=>value);
+            const residentsLocation = location.residents.map(value => value);
             const dataLocation = { nameLocation, typeLocation, dimensionLocation, numberResidentsLocation, residentsLocation };
             setLocationData(dataLocation);
         }
-    }, [location])
+    }, [location]);
 
-    const {numberResidentsLocation, residentsLocation}=locationData;
+    const { numberResidentsLocation, residentsLocation } = locationData;
+    
 
     return (
         <div>
             <LocationInfo location={locationData} />
-            
-            {numberResidentsLocation> 0 && residentsLocation.map((url, index)=>{
-                return <ResidentContainer url={url} key={index+1}/>
-            })} 
-            
+
+            <div className="container ">
+                <div className="row text-center">
+                    {numberResidentsLocation > 0 && residentsLocation.map((url, index) => {
+                        return <ResidentContainer url={url} key={index + 1} />
+                    })}
+                </div>
+
+            </div>
         </div>
     );
 }

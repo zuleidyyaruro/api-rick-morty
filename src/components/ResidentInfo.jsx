@@ -1,17 +1,24 @@
 
-const ResidentInfo = ({data}) => {
+const ResidentInfo = ({ data }) => {
 
-    const {name, image, status, bornPlace, numberEpisodes}=data;
+    const { name, image, status, bornPlace, numberEpisodes } = data;
 
     // console.log(dataResidents);
 
     return (
-        <div className="resident">
-            <p>{name}</p>
-            <img src={image} />
-            <p>Status: <span>{status}</span></p>
-            <p>Species: <span>{bornPlace}</span></p>
-            <p>Origin: <span>{numberEpisodes}</span></p>
+        <div className="border card">
+            <div>
+                <img src={image} alt={name} />
+            </div>
+
+            <div className="card-body ">
+                <h3>{name}</h3>
+
+                <span><strong>Status:</strong> {status}</span>
+                <span><strong>Species:</strong>  {bornPlace}</span>
+                <span><strong>Number of Episodes: </strong>{numberEpisodes}</span>
+            </div>
+
         </div>
     )
 }

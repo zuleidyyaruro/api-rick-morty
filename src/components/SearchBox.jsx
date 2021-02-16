@@ -13,9 +13,9 @@ const SearchBox = ({ handleSearch }) => {
     }
 
     return (
-        <div className=" searchbox-container border">
+        <div className=" searchbox-container">
             <div className="search-container-input ">
-                <input onChange={onChange} type="text" placeholder="Ingrese la ubicación que desea buscar" />
+                <input onChange={onChange} type="text" placeholder="Ingrese el ID de la ubicación que desea buscar" />
             </div>
 
             <div className=" search-container-btn">
