@@ -36,11 +36,16 @@ const LocationContainer = ({ id }) => {
         }
     }, [location])
 
+    const {numberResidentsLocation, residentsLocation}=locationData;
+
     return (
         <div>
             <LocationInfo location={locationData} />
-
-            <ResidentContainer location={locationData} id={id}/>
+            
+            {numberResidentsLocation> 0 && residentsLocation.map((url, index)=>{
+                return <ResidentContainer url={url} key={index+1}/>
+            })} 
+            
         </div>
     );
 }

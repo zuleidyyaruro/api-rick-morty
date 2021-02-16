@@ -4,7 +4,6 @@ const LocationInfo = ({ location }) => {
 
     const {nameLocation, typeLocation, dimensionLocation, numberResidentsLocation}=location;
 
-
     return (
         <div>
             <div className="location-info border">

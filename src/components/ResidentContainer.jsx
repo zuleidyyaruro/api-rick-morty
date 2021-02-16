@@ -2,50 +2,39 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ResidentInfo from "./ResidentInfo";
 
-const ResidentContainer = ({ location }) => {
+const ResidentContainer = ({ url }) => {
 
-    const { residentsLocation } = location;
+    console.log(url);
 
-    const [residents, setResidents] = useState({});
+    const [resident, setResidents] = useState(null);
+    const [locationDataResident, setLocationDataResident] = useState({});
 
-    // Este useEffect se ejecutará cada vez que location cambie
+    // // Este useEffect se ejecutará cada vez que location cambie
 
     useEffect(() => {
+        axios.get(url).then(response => {
+            setResidents(response.data);
+        })
+    }, [url])
 
-        if (residentsLocation !== undefined) {
-            const listItems = residentsLocation.map((value) => {
-                const arrayresidents = [];
-                arrayresidents.push(residents);
-                console.log(arrayresidents);
-                axios.get(value).then(response => {
-                    handleChangeArrayResident(response.data);
-                })
-            })
-        } else {
-            console.log("no hay residentes")
+    useEffect(() => {
+        if (resident !== null) {
+            setLocationDataResident({
+                name: resident.name,
+                image: resident.image,
+                status: resident.status,
+                bornPlace: resident.origin.name,
+                numberEpisodes: resident.episode.length
+            });
         }
-    }, [location])
+    }, [resident])
 
-    useEffect(()=>{
+    console.log(locationDataResident)
 
-        console.log("Hola")
-    }, [residents])
-
-
-    const handleChangeArrayResident = (data) => {
-        setResidents({
-            name: data.name,
-            image: data.image,
-            status: data.status,
-            bornPlace: data.origin.name,
-            numberEpisodes: data.episode.length
-        });
-    }
 
     return (
         <div>
-            {residents ? <ResidentInfo dataResidents={residents} /> : "Hola"}
-
+            <ResidentInfo data={locationDataResident} />
         </div>
     );
 }
