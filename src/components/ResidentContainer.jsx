@@ -4,13 +4,10 @@ import ResidentInfo from "./ResidentInfo";
 
 const ResidentContainer = ({ url }) => {
 
-    console.log(url);
-
     const [resident, setResidents] = useState(null);
     const [locationDataResident, setLocationDataResident] = useState({});
-
-    // // Este useEffect se ejecutará cada vez que location cambie
-
+    
+    // Este useEffect se ejecuta cada vez que url cambia y se almacena la data en residents
     useEffect(() => {
         axios.get(url).then(response => {
             setResidents(response.data);
@@ -29,10 +26,10 @@ const ResidentContainer = ({ url }) => {
         }
     }, [resident])
 
-    console.log(locationDataResident)
-
     return (
         <div className=" col margin-auto col-lg-3">
+
+
             <ResidentInfo data={locationDataResident} />
         </div>
     );
